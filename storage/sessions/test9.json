@@ -1,0 +1,15 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "¿Qué experiencia tiene Franco?"
+    },
+    {
+      "role": "assistant",
+      "content": "Franco tiene experiencia como Full Stack Developer y Product Builder. Fundador de RumLabs, estudio especializado en desarrollo de aplicaciones móviles, plataformas SaaS y soluciones digitales para startups y empresas. \n\nTambién se menciona su experiencia como Full Stack Developer en DataMatrix, en México, desde marzo de 2024 hasta septiembre de 2024, donde desarrolló funcionalidades frontend y backend en proyectos web, implementó APIs REST y consumo desde frontend, integró con bases de datos relacionales, resolvió bugs y optimizó rendimiento.\n\nAdemás, tiene experiencia como Técnico Informático Independiente, desde 2019 hasta 2024, donde brindó soporte IT y mantenimiento de sistemas, y atención a clientes particulares y pymes."
+    }
+  ],
+  "document_ids": [
+    "CV Rumisky Software Engineer 2026"
+  ]
+}

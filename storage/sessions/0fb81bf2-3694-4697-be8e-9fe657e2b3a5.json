@@ -1,0 +1,55 @@
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "quien es franco"
+    },
+    {
+      "role": "assistant",
+      "content": "Franco Rumisky."
+    },
+    {
+      "role": "user",
+      "content": "hola"
+    },
+    {
+      "role": "assistant",
+      "content": "No tengo información sobre quién es Franco en este contexto."
+    },
+    {
+      "role": "user",
+      "content": "cual es la capital de francia?"
+    },
+    {
+      "role": "assistant",
+      "content": "No puedo responderlo con certeza usando el contexto disponible."
+    },
+    {
+      "role": "user",
+      "content": "quien sos?"
+    },
+    {
+      "role": "assistant",
+      "content": "Daniela Rumisky."
+    },
+    {
+      "role": "user",
+      "content": "cual es el presupuesto?"
+    },
+    {
+      "role": "assistant",
+      "content": "$ 4800000\n$ 4800000"
+    },
+    {
+      "role": "user",
+      "content": "y quien es el titular des presupuesto?"
+    },
+    {
+      "role": "assistant",
+      "content": "Daniela Rumisky."
+    }
+  ],
+  "document_ids": [
+    "Presupuesto la casona"
+  ]
+}
