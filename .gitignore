@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+venv/
+.env
+
+# Editor
+.vscode/
+.idea/
+
+# Database
+chroma_db/
+
+# Logs
+logs/
+
+# Storage and sessions
+storage/
+
+# OS files
+.DS_Store
+Thumbs.db
