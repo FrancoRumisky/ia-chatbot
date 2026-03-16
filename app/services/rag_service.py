@@ -107,7 +107,7 @@ class RagService:
 
         return pages_output
 
-    def ingest_pdf(self, pdf_path: str) -> Dict[str, Any]:
+    def ingest_pdf(self, pdf_path: str, user_id: str) -> Dict[str, Any]:
         chunk_entries = self._extract_pages(pdf_path)
 
         if not chunk_entries:
@@ -152,7 +152,8 @@ class RagService:
                     "chunkIndex": global_index,
                     "chunkIndexInPage": chunk_index_in_page,
                     "chunkPreview": chunk_text[:180],
-                    "ingestedAt": ingested_at
+                    "ingestedAt": ingested_at,
+                    "user_id": user_id
                 }
             )
 
@@ -181,6 +182,7 @@ class RagService:
     def search(
         self,
         query: str,
+        user_id: str,
         document_ids: List[str],
         n_results: int = 8
     ) -> List[Dict[str, Any]]:
@@ -190,9 +192,10 @@ class RagService:
             query_embeddings=[query_embedding],
             n_results=n_results,
             where={
-                "documentId": {
-                    "$in": document_ids
-                }
+                "$and": [
+                    {"user_id": user_id},
+                    {"documentId": {"$in": document_ids}}
+                ]
             },
             include=["documents", "metadatas", "distances"]
         )
@@ -240,11 +243,13 @@ class RagService:
     def build_context(
         self,
         query: str,
+        user_id: str,
         document_ids: List[str],
         n_results: int = 10
     ) -> str:
         results = self.search(
             query=query,
+            user_id=user_id,
             document_ids=document_ids,
             n_results=n_results
         )
@@ -287,11 +292,12 @@ class RagService:
     def build_context(
         self,
         query: str,
+        user_id: str,
         document_ids: List[str],
         n_results: int = 10,
         source_types: List[str] = None
     ) -> str:
-        return self.retrieval_service.build_context(query, document_ids, n_results, source_types)
+        return self.retrieval_service.build_context(query, user_id, document_ids, n_results, source_types)
 
     def chat(self, messages: List[Dict[str, str]]) -> str:
         response = ollama.chat(

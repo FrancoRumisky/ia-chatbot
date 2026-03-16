@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     chroma_db_path: str = "./chroma_db"
     embedding_model: str = "embeddinggemma"
     rag_collection_name: str = "pdf_knowledge_base"
-    chat_model: str = "llama3.1:latest"
+    chat_model: str = "qwen2.5:1.5b"
     logs_dir: str = "logs"
     chat_logs_file: str = "chat_interactions.jsonl"
     knowledge_base_dir: str = "knowledge_base"
@@ -26,7 +26,9 @@ Reglas obligatorias:
 - No agregues ceros, comas, puntos o espacios a los números.
 - No redondees ni interpretes los números; transcríbelos exactamente como están.
 - Si hay duda sobre un valor numérico, indícalo en lugar de asumir.
-- Sé claro, breve y práctico."""
+- Sé claro, breve y práctico.
+- Responde en un máximo de 60 palabras, salvo que el usuario pida más detalle."""
+
 
     model_config = {
         "extra": "ignore",

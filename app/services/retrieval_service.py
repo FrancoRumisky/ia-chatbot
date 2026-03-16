@@ -31,6 +31,7 @@ class RetrievalService:
     def search(
         self,
         query: str,
+        user_id: str,
         document_ids: List[str],
         n_results: int = 8,
         source_types: List[str] = None  # Nuevo filtro opcional
@@ -40,9 +41,14 @@ class RetrievalService:
             query_embedding = self.embedding_service.get_embedding(query)
 
             # Construir filtros where
-            where_conditions = {"documentId": {"$in": document_ids}}
+            where_conditions = {
+                "$and": [
+                    {"user_id": user_id},
+                    {"documentId": {"$in": document_ids}}
+                ]
+            }
             if source_types:
-                where_conditions["sourceType"] = {"$in": source_types}
+                where_conditions["$and"].append({"sourceType": {"$in": source_types}})
 
             results = self.collection.query(
                 query_embeddings=[query_embedding],
@@ -108,6 +114,7 @@ class RetrievalService:
     def build_context(
         self,
         query: str,
+        user_id: str,
         document_ids: List[str],
         n_results: int = 10,
         source_types: List[str] = None
@@ -116,6 +123,7 @@ class RetrievalService:
         try:
             results = self.search(
                 query=query,
+                user_id=user_id,
                 document_ids=document_ids,
                 n_results=n_results,
                 source_types=source_types
